@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio Geom. Verri Lorenzo</title>
+<meta name="description" content="Geometra a Novara: sanatorie, pratiche edilizie, accatastamenti, perizie, rilievi 2D e 3D con drone, coordinamento sicurezza CSP/CSE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="icon" href="img/logo.png">
+<style>
+:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: tavola tecnica. Griglia a 12 colonne con cartiglio, quote e coordinate come dettagli; un solo colore d'accento (blu cianografia), giallo cantiere solo per la sicurezza. */
+:root {
+  --paper: #f2f4f3;
+  --sheet: #ffffff;
+  --ink: #1d1d1b;
+  --ink-2: #4a5250;
+  --line: #d3d9d7;
+  --accent: #1f4e79;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3ebf3;
+  --safety: #f2b705;
+  --ph: #9a5b00;
+  --contour: rgba(31, 78, 121, .22);
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --maxw: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121517; --sheet: #1a1f22; --ink: #e8ecea; --ink-2: #a9b3b0; --line: #2d3538;
+    --accent: #7fb0de; --accent-ink: #0d1a26; --accent-soft: #1b2a37; --safety: #f2c230; --ph: #f0b45a;
+    --contour: rgba(127, 176, 222, .18); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121517; --sheet: #1a1f22; --ink: #e8ecea; --ink-2: #a9b3b0; --line: #2d3538;
+  --accent: #7fb0de; --accent-ink: #0d1a26; --accent-soft: #1b2a37; --safety: #f2c230; --ph: #f0b45a;
+  --contour: rgba(127, 176, 222, .18); color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { filter: invert(1) brightness(.95); } }
+:root[data-theme="dark"] .logo { filter: invert(1) brightness(.95); }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.label { font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.ph { color: var(--ph); border-bottom: 1px dashed currentColor; font-style: normal; }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand img { width: 34px; height: auto; }
+.brand b { font: 700 1.05rem/1.1 var(--f-display); font-stretch: 112%; display: block; }
+.brand span { font: 400 .72rem/1.2 var(--f-mono); color: var(--ink-2); letter-spacing: .06em; text-transform: uppercase; }
+.nav { display: flex; gap: 22px; font-size: .93rem; }
+.nav a { color: var(--ink); text-decoration: none; }
+.nav a:hover { color: var(--accent); }
+.nav .cta { background: var(--accent); color: var(--accent-ink); padding: 7px 14px; border-radius: 3px; font-weight: 600; }
+.nav .cta:hover { color: var(--accent-ink); filter: brightness(1.1); }
+@media (max-width: 860px) { .nav a:not(.cta) { display: none; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: end; padding-block: 88px 64px; }
+.hero h1 { font-size: clamp(2.3rem, 5.4vw, 4.1rem); font-weight: 760; font-stretch: 108%; letter-spacing: -.015em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 22px; max-width: 34em; font-size: 1.15rem; color: var(--ink-2); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 3px; font: 600 1rem/1 var(--f-body); text-decoration: none; border: 1px solid var(--accent); cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+
+/* cartiglio: title block of a technical drawing */
+.cartiglio { background: var(--sheet); border: 1.5px solid var(--ink); font: 400 .8rem/1.4 var(--f-mono); }
+.cartiglio div { display: grid; grid-template-columns: 9.5em 1fr; border-top: 1px solid var(--ink); }
+.cartiglio div:first-child { border-top: 0; }
+.cartiglio dt, .cartiglio dd { margin: 0; padding: 7px 10px; }
+.cartiglio dt { color: var(--ink-2); border-right: 1px solid var(--ink); text-transform: uppercase; letter-spacing: .05em; font-size: .7rem; align-self: center; }
+.cartiglio dd { color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+.cartiglio .head { display: flex; gap: 12px; align-items: center; padding: 10px; }
+.cartiglio .head img { width: 38px; }
+.cartiglio .head b { font: 700 1rem/1.15 var(--f-display); font-stretch: 110%; }
+
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 56px 40px; gap: 36px; } }
+
+/* Sections */
+section { padding-block: 84px; }
+.sec-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: end; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 720; font-stretch: 106%; }
+.sec-head p { color: var(--ink-2); max-width: 38em; }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; gap: 14px; } section { padding-block: 60px; } }
+
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); border-left: 1px solid var(--line); }
+.svc { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 26px 30px; display: flex; flex-direction: column; gap: 12px; background: var(--sheet); min-width: 0; }
+.svc .code { font: 500 .72rem/1 var(--f-mono); color: var(--accent); letter-spacing: .08em; }
+.svc h3 { font-size: 1.32rem; font-weight: 700; font-stretch: 104%; }
+.svc p { color: var(--ink-2); font-size: .98rem; }
+.svc ul { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.svc li { font: 400 .74rem/1 var(--f-mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); }
+.svc.sic { box-shadow: inset 0 4px 0 var(--safety); }
+@media (max-width: 960px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .services { grid-template-columns: 1fr; } }
+
+/* Feature bands */
+.band { background: var(--sheet); border-block: 1px solid var(--line); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.split > * { min-width: 0; }
+.split h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 720; font-stretch: 106%; margin-top: 10px; }
+.split .body { display: grid; gap: 16px; margin-top: 20px; color: var(--ink-2); max-width: 36em; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 32px; } }
+
+.specs { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.specs th, .specs td { text-align: left; padding: 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.specs th { font: 500 .75rem/1.5 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); width: 40%; padding-right: 16px; }
+.specs caption { text-align: left; padding-bottom: 10px; }
+
+.drone-fig { margin: 0; border: 1px solid var(--line); background: var(--paper); aspect-ratio: 4 / 3; max-width: 100%; position: relative; overflow: hidden; }
+.drone-fig svg { width: 100%; height: 100%; display: block; }
+.drone-fig figcaption { position: absolute; left: 12px; bottom: 10px; font: 400 .72rem/1.3 var(--f-mono); color: var(--ink-2); }
+
+.callout { border-left: 4px solid var(--safety); background: var(--paper); padding: 18px 20px; font-size: .97rem; color: var(--ink); }
+.callout b { font-family: var(--f-display); }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; counter-reset: s; border-top: 1.5px solid var(--ink); }
+.steps li { padding: 22px 20px 0 0; counter-increment: s; position: relative; }
+.steps li::before { content: counter(s); font: 700 2.4rem/1 var(--f-display); font-stretch: 120%; color: var(--accent); display: block; margin-bottom: 12px; }
+.steps li::after { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
+.steps h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 6px; }
+.steps p { font-size: .93rem; color: var(--ink-2); }
+@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* About */
+.about { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
+.photo { aspect-ratio: 3 / 4; max-width: 100%; border: 1px dashed var(--ph); display: grid; place-items: center; text-align: center; font: 400 .78rem/1.4 var(--f-mono); color: var(--ph); padding: 12px; background: var(--sheet); }
+.about .body { display: grid; gap: 16px; color: var(--ink-2); max-width: 40em; }
+.creds { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 8px; }
+.creds div { display: grid; gap: 2px; }
+.creds b { font: 600 1rem/1.3 var(--f-body); color: var(--ink); }
+@media (max-width: 700px) { .about { grid-template-columns: 1fr; } .photo { max-width: 200px; } }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; }
+.contact > * { min-width: 0; }
+.contact dl { margin: 24px 0 0; display: grid; gap: 18px; }
+.contact dt { margin-bottom: 2px; }
+.contact dd { margin: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.copy { font: 500 .7rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line); background: transparent; color: var(--ink-2); padding: 5px 8px; border-radius: 2px; cursor: pointer; }
+.copy:hover { color: var(--accent); border-color: var(--accent); }
+form { background: var(--sheet); border: 1px solid var(--line); padding: 28px; display: grid; gap: 16px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } form { padding: 20px; } }
+label { display: grid; gap: 6px; font-size: .88rem; font-weight: 600; }
+input, select, textarea { font: 400 1rem/1.4 var(--f-body); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 10px 12px; width: 100%; }
+textarea { min-height: 120px; resize: vertical; }
+.note { font-size: .82rem; color: var(--ink-2); }
+.sent { background: var(--accent-soft); color: var(--ink); padding: 12px 14px; font-size: .93rem; }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; gap: 36px; } }
+
+footer { border-top: 1.5px solid var(--ink); padding-block: 28px 36px; font: 400 .78rem/1.6 var(--f-mono); color: var(--ink-2); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inizio">
+      <img class="logo" src="img/logo.png" alt="Logo Studio Geom. Verri Lorenzo">
+      <div><b>Studio Geom. Verri Lorenzo</b><span>Geometra · Novara</span></div>
+    </a>
+    <nav class="nav" aria-label="Sezioni">
+      <a href="#servizi">Servizi</a>
+      <a href="#drone">Rilievi con drone</a>
+      <a href="#sicurezza">Sicurezza</a>
+      <a href="#metodo">Come lavoro</a>
+      <a class="cta" href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inizio">
+  <section class="hero" style="padding-block:0">
+    <canvas id="topo" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <p class="label">Geometra libero professionista · Novara e provincia</p>
+        <h1 style="margin-top:16px">Il tuo immobile, <em>in regola</em> e misurato con precisione.</h1>
+        <p class="lead">Sanatorie, pratiche edilizie, catasto, perizie, rilievi 2D e 3D anche con drone, coordinamento della sicurezza in cantiere. Un unico tecnico che segue la pratica dal sopralluogo alla chiusura.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contatti">Richiedi un sopralluogo</a>
+          <a class="btn ghost" href="#servizi">Vedi i servizi</a>
+        </div>
+      </div>
+      <dl class="cartiglio" aria-label="Dati dello studio">
+        <div class="head"><img class="logo" src="img/logo.png" alt=""><b>Studio Geom.<br>Verri Lorenzo</b></div>
+        <div><dt>Studio</dt><dd>Strada Privata Bellazzi, 20 · 28100 Novara</dd></div>
+        <div><dt>Telefono</dt><dd>+39 377 543 1027</dd></div>
+        <div><dt>Email</dt><dd>geo.verri@gmail.com</dd></div>
+        <div><dt>Collegio</dt><dd>Geometri di Novara · n. <span class="ph">[____]</span></dd></div>
+        <div><dt>Coordinate</dt><dd>45°26′ N · 8°37′ E · q. 159 m s.l.m.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="servizi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Servizi</p><h2 style="margin-top:10px">Cosa posso fare per te</h2></div>
+        <p>Privati, imprese, amministratori di condominio e studi notarili. Ogni incarico parte da un sopralluogo e da una verifica dei documenti in Comune e al Catasto, così sai fin da subito tempi e costi.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <span class="code">01 · SANATORIE</span>
+          <h3>Sanatorie e regolarizzazioni</h3>
+          <p>Verifico la conformità tra lo stato di fatto e i titoli edilizi, individuo le difformità e scelgo la procedura corretta per sanarle prima di un rogito, una vendita o una ristrutturazione.</p>
+          <ul><li>Accertamento di conformità art. 36 DPR 380/01</li><li>Tolleranze art. 34-bis</li><li>Accesso agli atti</li><li>Stato legittimo</li></ul>
+        </article>
+        <article class="svc">
+          <span class="code">02 · EDILIZIA</span>
+          <h3>Pratiche per ristrutturazioni</h3>
+          <p>Progetto e presento la pratica giusta per il tuo intervento, dalla manutenzione straordinaria alla ristrutturazione, e seguo l'iter con l'ufficio tecnico fino alla fine lavori.</p>
+          <ul><li>CILA</li><li>SCIA</li><li>Permesso di costruire</li><li>Agibilità</li><li>Direzione lavori</li></ul>
+        </article>
+        <article class="svc">
+          <span class="code">03 · CATASTO</span>
+          <h3>Accatastamenti e variazioni</h3>
+          <p>Aggiorno la situazione catastale dopo lavori, frazionamenti o fusioni, così planimetrie e rendita corrispondono a quello che c'è davvero.</p>
+          <ul><li>Docfa</li><li>Pregeo · tipo mappale</li><li>Frazionamenti e fusioni</li><li>Volture</li><li>Visure e planimetrie</li></ul>
+        </article>
+        <article class="svc">
+          <span class="code">04 · PERIZIE</span>
+          <h3>Perizie e stime</h3>
+          <p>Valutazioni del valore di mercato e perizie tecniche per compravendite, successioni, divisioni e contenziosi, con relazione scritta e documentazione fotografica.</p>
+          <ul><li>Stima di immobili</li><li>Perizie giurate</li><li>Successioni</li><li>Due diligence pre-rogito</li></ul>
+        </article>
+        <article class="svc">
+          <span class="code">05 · RILIEVI</span>
+          <h3>Rilievi 2D e 3D, anche con drone</h3>
+          <p>Rilievo metrico di edifici, terreni e coperture con strumentazione topografica e fotogrammetria da drone. Consegno disegni CAD, ortofoto e modelli 3D pronti per il progetto.</p>
+          <ul><li>Piante e sezioni CAD</li><li>Ortofoto</li><li>Nuvola di punti</li><li>Modello 3D</li><li>Piano quotato</li></ul>
+        </article>
+        <article class="svc sic">
+          <span class="code">06 · SICUREZZA</span>
+          <h3>Coordinamento sicurezza CSP e CSE</h3>
+          <p>Coordino la sicurezza nei cantieri temporanei o mobili, in progettazione e in esecuzione, secondo il Titolo IV del D.Lgs. 81/2008.</p>
+          <ul><li>PSC</li><li>Fascicolo dell'opera</li><li>Notifica preliminare</li><li>Verifica POS</li><li>Verbali di sopralluogo</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="drone" class="band">
+    <div class="wrap split">
+      <div>
+        <p class="label">Rilievi 2D e 3D</p>
+        <h2>Misure dall'alto, anche dove non si sale</h2>
+        <div class="body">
+          <p>Con il drone rilevo tetti, facciate, lotti e aree di cantiere in poche ore e senza ponteggi. Le foto aeree vengono elaborate in fotogrammetria e appoggiate a punti di controllo misurati a terra, così il risultato è un modello metrico e non una semplice immagine.</p>
+          <p>Il rilievo serve come base per pratiche edilizie, progetti di ristrutturazione, computi delle coperture, calcolo di volumi di scavo e documentazione dello stato di avanzamento lavori.</p>
+        </div>
+      </div>
+      <div style="display:grid;gap:24px">
+        <figure class="drone-fig">
+          <svg viewBox="0 0 400 300" role="img" aria-label="Schema di un volo fotogrammetrico a strisciate sopra un edificio">
+            <rect x="0" y="0" width="400" height="300" fill="none"/>
+            <g stroke="var(--line)" stroke-width="1" fill="none">
+              <path d="M0 60H400M0 120H400M0 180H400M0 240H400M80 0V300M160 0V300M240 0V300M320 0V300"/>
+            </g>
+            <rect x="120" y="95" width="160" height="110" fill="var(--sheet)" stroke="var(--ink)" stroke-width="1.5"/>
+            <path d="M120 95L200 150L280 95M120 205L200 150L280 205" fill="none" stroke="var(--ink)" stroke-width="1"/>
+            <path d="M50 50H350V100H50V150H350V200H50V250H350" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 5"/>
+            <g fill="var(--accent)">
+              <circle cx="50" cy="50" r="4"/><circle cx="350" cy="250" r="4"/>
+            </g>
+            <g fill="none" stroke="var(--safety)" stroke-width="2">
+              <path d="M95 75l10 10m0-10l-10 10M295 220l10 10m0-10l-10 10M295 75l10 10m0-10l-10 10M95 220l10 10m0-10l-10 10"/>
+            </g>
+            <text x="58" y="44" fill="var(--ink-2)" font-family="JetBrains Mono, monospace" font-size="10">START · h 40 m</text>
+            <text x="250" y="270" fill="var(--ink-2)" font-family="JetBrains Mono, monospace" font-size="10">GCP ✕ a terra</text>
+          </svg>
+          <figcaption>Volo a strisciate · sovrapposizione 75/65%</figcaption>
+        </figure>
+        <table class="specs">
+          <caption class="label">Cosa ricevi</caption>
+          <tr><th>Elaborati 2D</th><td>Piante, prospetti, sezioni in DWG/DXF e PDF</td></tr>
+          <tr><th>Elaborati 3D</th><td>Nuvola di punti, mesh texturizzata, modello del terreno</td></tr>
+          <tr><th>Ortofoto</th><td>Georeferenziata, per coperture, lotti e cantieri</td></tr>
+          <tr><th>Drone e abilitazione</th><td><span class="ph">[modello drone] · [attestato pilota A1/A3, A2]</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="sicurezza">
+    <div class="wrap split">
+      <div>
+        <p class="label">Sicurezza nei cantieri</p>
+        <h2>Coordinatore per la sicurezza, dal progetto alla fine lavori</h2>
+        <div class="body">
+          <p>Come <b>CSP</b> redigo il Piano di Sicurezza e Coordinamento e il fascicolo dell'opera insieme al progetto. Come <b>CSE</b> verifico in cantiere che le imprese applichino il piano, controllo i POS, organizzo le riunioni di coordinamento e documento ogni sopralluogo.</p>
+          <p>Per il committente significa adempiere agli obblighi di legge e avere un riferimento unico per tutte le imprese presenti in cantiere.</p>
+        </div>
+      </div>
+      <div style="display:grid;gap:20px">
+        <div class="callout"><b>Quando serve il coordinatore?</b><br>Quando in cantiere è prevista la presenza di più imprese esecutrici, anche in momenti diversi. In quel caso il committente deve nominare CSP e CSE (art. 90 D.Lgs. 81/2008). Vale anche per i lavori in casa privata.</div>
+        <table class="specs">
+          <tr><th>In progettazione (CSP)</th><td>PSC, stima dei costi della sicurezza, fascicolo dell'opera</td></tr>
+          <tr><th>In esecuzione (CSE)</th><td>Verifica idoneità dei POS, sopralluoghi, verbali, aggiornamento del PSC</td></tr>
+          <tr><th>Adempimenti</th><td>Notifica preliminare, verifica dell'idoneità tecnico-professionale delle imprese</td></tr>
+          <tr><th>Formazione</th><td>Abilitazione coordinatore (D.Lgs. 81/08, All. XIV), aggiornamento 2024</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Come lavoro</p><h2 style="margin-top:10px">Dalla prima telefonata alla pratica chiusa</h2></div>
+        <p>Un percorso chiaro, con un preventivo scritto prima di iniziare e aggiornamenti a ogni passaggio.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Primo contatto</h3><p>Mi racconti cosa ti serve. Ti dico subito quali documenti preparare.</p></li>
+        <li><h3>Sopralluogo e verifiche</h3><p>Visita all'immobile, accesso agli atti in Comune, visure catastali.</p></li>
+        <li><h3>Preventivo</h3><p>Proposta scritta con attività, tempi e costi, senza sorprese.</p></li>
+        <li><h3>Rilievo e pratica</h3><p>Misuro, disegno e presento la pratica agli enti competenti.</p></li>
+        <li><h3>Consegna</h3><p>Ricevi elaborati e ricevute di protocollo. Resto il tuo riferimento.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="chi-sono">
+    <div class="wrap about">
+      <div class="photo">Foto di Lorenzo<br>[da inserire]</div>
+      <div>
+        <p class="label">Chi sono</p>
+        <h2 style="margin-top:10px;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:720">Lorenzo Verri, geometra</h2>
+        <div class="body" style="margin-top:20px">
+          <p>Sono un geometra libero professionista con studio a Novara. Mi occupo di edilizia, catasto, rilievi e sicurezza: le competenze che servono per seguire un immobile dal rilievo iniziale fino all'ultima pratica.</p>
+          <p>Lavoro con strumenti di rilievo moderni, drone compreso, e preferisco spiegare le cose in modo semplice: cosa serve, perché serve e quanto costa. <span class="ph">[Aggiungi qui anni di esperienza, zone servite e un tuo tratto personale.]</span></p>
+          <div class="creds">
+            <div><span class="label">Albo</span><b>Collegio Geometri di Novara n. <span class="ph">[____]</span></b></div>
+            <div><span class="label">Sicurezza</span><b>Coordinatore CSP/CSE abilitato</b></div>
+            <div><span class="label">Drone</span><b>Pilota UAS <span class="ph">[categoria]</span></b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti" class="band">
+    <div class="wrap contact">
+      <div>
+        <p class="label">Contatti</p>
+        <h2 style="margin-top:10px;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:720">Parliamo del tuo immobile</h2>
+        <p style="margin-top:16px;color:var(--ink-2);max-width:30em">Chiamami o scrivimi: ti rispondo entro un giorno lavorativo. Ricevo in studio su appuntamento.</p>
+        <dl>
+          <div><dt class="label">Telefono</dt><dd><span id="tel">+39 377 543 1027</span><button class="copy" type="button" data-copy="tel">Copia</button></dd></div>
+          <div><dt class="label">Email</dt><dd><span id="mail">geo.verri@gmail.com</span><button class="copy" type="button" data-copy="mail">Copia</button></dd></div>
+          <div><dt class="label">Studio</dt><dd>Strada Privata Bellazzi, 20<br>28100 Novara (NO)</dd></div>
+          <div><dt class="label">Zona operativa</dt><dd>Novara e provincia <span class="ph">[da confermare]</span></dd></div>
+        </dl>
+      </div>
+      <form id="richiesta" novalidate>
+        <div class="row">
+          <label for="f-nome">Nome e cognome<input id="f-nome" name="nome" autocomplete="name" placeholder="Mario Rossi"></label>
+          <label for="f-tel">Telefono<input id="f-tel" name="telefono" type="tel" autocomplete="tel" placeholder="+39 ..."></label>
+        </div>
+        <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" placeholder="nome@esempio.it"></label>
+        <label for="f-servizio">Di cosa hai bisogno
+          <select id="f-servizio" name="servizio">
+            <option>Sanatoria o verifica di conformità</option>
+            <option>Pratica per ristrutturazione</option>
+            <option>Accatastamento o variazione catastale</option>
+            <option>Perizia o stima</option>
+            <option>Rilievo 2D/3D o con drone</option>
+            <option>Coordinamento sicurezza CSP/CSE</option>
+            <option>Altro</option>
+          </select>
+        </label>
+        <label for="f-msg">Descrivi brevemente l'immobile e la richiesta<textarea id="f-msg" name="messaggio" placeholder="Es. appartamento a Novara, devo vendere e il notaio chiede la conformità urbanistica e catastale."></textarea></label>
+        <button class="btn primary" type="submit" style="justify-self:start">Invia richiesta</button>
+        <p class="note">Anteprima: il modulo non invia ancora i messaggi. Lo collegheremo alla tua email quando il sito andrà online.</p>
+        <p class="sent" id="sent" hidden>Grazie. In questa anteprima la richiesta non viene spedita: sul sito pubblicato arriverà a geo.verri@gmail.com.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Studio Geom. Verri Lorenzo · Strada Privata Bellazzi, 20 · 28100 Novara · P.IVA 02733000034</span>
+    <span>Privacy policy <span class="ph">[da redigere]</span> · Cookie: nessun cookie di profilazione</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Curve di livello generate, ridisegnate al cambio di tema o dimensione
+  var c = document.getElementById('topo'); if (!c) return;
+  var ctx = c.getContext('2d');
+  function h(x, y) {
+    return Math.sin(x * 2.1 + 0.6) * Math.cos(y * 1.7) * 0.9 + Math.sin(x * 4.3 - y * 3.1) * 0.35 + Math.exp(-((x - 1.9) * (x - 1.9) + (y - 0.4) * (y - 0.4)) * 1.4) * 1.6 + y * 0.25;
+  }
+  function draw() {
+    var r = c.getBoundingClientRect(), d = window.devicePixelRatio || 1;
+    c.width = r.width * d; c.height = r.height * d;
+    ctx.setTransform(d, 0, 0, d, 0, 0); ctx.clearRect(0, 0, r.width, r.height);
+    var col = getComputedStyle(document.documentElement).getPropertyValue('--contour').trim() || 'rgba(31,78,121,.2)';
+    var step = 14, nx = Math.ceil(r.width / step) + 1, ny = Math.ceil(r.height / step) + 1, sc = 3.2 / Math.max(r.width, 600);
+    var g = [];
+    for (var j = 0; j < ny; j++) { g[j] = []; for (var i = 0; i < nx; i++) g[j][i] = h(i * step * sc, j * step * sc); }
+    ctx.lineWidth = 1;
+    for (var lv = -2; lv <= 3; lv += 0.22) {
+      var major = Math.abs((lv * 100) % 110) < 1;
+      ctx.strokeStyle = col; ctx.lineWidth = major ? 1.6 : 0.9; ctx.beginPath();
+      for (j = 0; j < ny - 1; j++) for (i = 0; i < nx - 1; i++) {
+        var a = g[j][i], b = g[j][i + 1], cc = g[j + 1][i + 1], dd = g[j + 1][i], x = i * step, y = j * step, p = [];
+        function e(v1, v2, x1, y1, x2, y2) { if ((v1 < lv) !== (v2 < lv)) { var t = (lv - v1) / (v2 - v1); p.push([x1 + (x2 - x1) * t, y1 + (y2 - y1) * t]); } }
+        e(a, b, x, y, x + step, y); e(b, cc, x + step, y, x + step, y + step); e(dd, cc, x, y + step, x + step, y + step); e(a, dd, x, y, x, y + step);
+        if (p.length >= 2) { ctx.moveTo(p[0][0], p[0][1]); ctx.lineTo(p[1][0], p[1][1]); }
+        if (p.length === 4) { ctx.moveTo(p[2][0], p[2][1]); ctx.lineTo(p[3][0], p[3][1]); }
+      }
+      ctx.stroke();
+    }
+  }
+  draw();
+  var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(draw, 120); });
+  if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var el = document.getElementById(b.getAttribute('data-copy')), txt = el.textContent;
+      function ok() { b.textContent = 'Copiato'; setTimeout(function () { b.textContent = 'Copia'; }, 1600); }
+      function sel() { var rg = document.createRange(); rg.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); }
+      try { navigator.clipboard.writeText(txt).then(ok, sel); } catch (e) { sel(); }
+    });
+  });
+  document.getElementById('richiesta').addEventListener('submit', function (ev) {
+    ev.preventDefault(); document.getElementById('sent').hidden = false;
+  });
+})();
+</script>
+</body>
+</html>
