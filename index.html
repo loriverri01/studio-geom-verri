@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Studio Geom. Verri Lorenzo</title>
-<meta name="description" content="Geometra a Novara: sanatorie, pratiche edilizie, accatastamenti, perizie, rilievi 2D e 3D con drone, modelli BIM in Revit, coordinamento sicurezza CSP/CSE.">
+<meta name="description" content="Geometra a Novara: sanatorie, pratiche edilizie, accatastamenti, perizie, APE, rilievi 2D e 3D con drone, modellazione 3D, coordinamento sicurezza CSP/CSE.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -112,7 +112,8 @@ section { padding-block: 84px; }
 .svc p { color: var(--ink-2); font-size: .98rem; }
 .svc ul { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .svc li { font: 400 .74rem/1 var(--f-mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); }
-.svc.sic { box-shadow: inset 0 4px 0 var(--safety); }
+.svc.sic { box-shadow: inset 0 4px 0 var(--safety); grid-column: 1 / -1; }
+.svc.sic p { max-width: 46em; }
 @media (max-width: 960px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .services { grid-template-columns: 1fr; } }
 
@@ -187,7 +188,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </a>
     <nav class="nav" aria-label="Sezioni">
       <a href="#servizi">Servizi</a>
-      <a href="#drone">Rilievi e BIM</a>
+      <a href="#drone">Rilievi e 3D</a>
       <a href="#sicurezza">Sicurezza</a>
       <a href="#metodo">Come lavoro</a>
       <a class="cta" href="#contatti">Contatti</a>
@@ -202,7 +203,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div>
         <p class="label">Geometra libero professionista · Novara e provincia</p>
         <h1 style="margin-top:16px">Il tuo immobile, <em>in regola</em> e misurato con precisione.</h1>
-        <p class="lead">Sanatorie, pratiche edilizie, catasto, perizie, rilievi 2D e 3D anche con drone, modelli BIM in Revit, coordinamento della sicurezza in cantiere. Un unico tecnico che segue la pratica dal sopralluogo alla chiusura.</p>
+        <p class="lead">Sanatorie, pratiche edilizie, catasto, perizie, APE, rilievi 2D e 3D anche con drone, modellazione 3D, coordinamento della sicurezza in cantiere. Un unico tecnico che segue la pratica dal sopralluogo alla chiusura.</p>
         <div class="actions">
           <a class="btn primary" href="#contatti">Richiedi un sopralluogo</a>
           <a class="btn ghost" href="#servizi">Vedi i servizi</a>
@@ -250,13 +251,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <ul><li>Stima di immobili</li><li>Perizie giurate</li><li>Successioni</li><li>Due diligence pre-rogito</li></ul>
         </article>
         <article class="svc">
-          <span class="code">05 · RILIEVI</span>
-          <h3>Rilievi 2D e 3D e modelli BIM</h3>
+          <span class="code">05 · ENERGIA</span>
+          <h3>Attestati di prestazione energetica</h3>
+          <p>Redigo l'APE necessario per vendere o affittare un immobile e per molte detrazioni fiscali: sopralluogo, calcolo della classe energetica, consigli per migliorarla e trasmissione al catasto energetico regionale.</p>
+          <ul><li>APE per vendita e affitto</li><li>Classe energetica negli annunci</li><li>Validità 10 anni</li><li>SIPEE Regione Piemonte</li></ul>
+        </article>
+        <article class="svc">
+          <span class="code">06 · RILIEVI</span>
+          <h3>Rilievi e modellazione 3D</h3>
           <p>Rilievo metrico di edifici, terreni e coperture con strumentazione topografica e fotogrammetria da drone. Elaboro nuvole di punti, anche fornite da altri, e le trasformo in disegni CAD e modelli 3D in Revit pronti per il progetto.</p>
-          <ul><li>Piante e sezioni CAD</li><li>Ortofoto</li><li>Elaborazione nuvole di punti</li><li>Modello BIM in Revit</li><li>Scan-to-BIM</li><li>Piano quotato</li></ul>
+          <ul><li>Piante e sezioni CAD</li><li>Ortofoto</li><li>Elaborazione nuvole di punti</li><li>Modellazione 3D in Revit</li><li>Dalla nuvola al modello</li><li>Piano quotato</li></ul>
         </article>
         <article class="svc sic">
-          <span class="code">06 · SICUREZZA</span>
+          <span class="code">07 · SICUREZZA</span>
           <h3>Coordinamento sicurezza CSP e CSE</h3>
           <p>Coordino la sicurezza nei cantieri temporanei o mobili, in progettazione e in esecuzione, secondo il Titolo IV del D.Lgs. 81/2008.</p>
           <ul><li>PSC</li><li>Fascicolo dell'opera</li><li>Notifica preliminare</li><li>Verifica POS</li><li>Verbali di sopralluogo</li></ul>
@@ -268,11 +275,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="drone" class="band">
     <div class="wrap split">
       <div>
-        <p class="label">Rilievi 2D e 3D · BIM</p>
+        <p class="label">Rilievi 2D e 3D · Modellazione 3D</p>
         <h2>Misure dall'alto, anche dove non si sale</h2>
         <div class="body">
           <p>Con il drone rilevo tetti, facciate, lotti e aree di cantiere in poche ore e senza ponteggi. Le foto aeree vengono elaborate in fotogrammetria e appoggiate a punti di controllo misurati a terra, così il risultato è un modello metrico e non una semplice immagine.</p>
-          <p>Dalla nuvola di punti ricavo il modello 3D dell'edificio in Revit, con muri, solai, aperture e coperture: una base BIM su cui progettare, fare computi e confrontare le alternative di intervento. Elaboro anche nuvole di punti da laser scanner fornite da altri tecnici.</p>
+          <p>Dalla nuvola di punti ricavo il modello 3D dell'edificio in Revit, con muri, solai, aperture e coperture: una base su cui progettare, fare computi e confrontare le alternative di intervento. Elaboro anche nuvole di punti da laser scanner fornite da altri tecnici.</p>
           <p>Il rilievo serve come base per pratiche edilizie, progetti di ristrutturazione, computi delle coperture, calcolo di volumi di scavo e documentazione dello stato di avanzamento lavori.</p>
         </div>
       </div>
@@ -301,7 +308,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <caption class="label">Cosa ricevi</caption>
           <tr><th>Elaborati 2D</th><td>Piante, prospetti, sezioni in DWG/DXF e PDF</td></tr>
           <tr><th>Elaborati 3D</th><td>Nuvola di punti, mesh texturizzata, modello del terreno</td></tr>
-          <tr><th>Modello BIM</th><td>Modello 3D in Revit (RVT, IFC) ricavato dalla nuvola di punti</td></tr>
+          <tr><th>Modello 3D</th><td>Modello 3D in Revit (RVT, IFC) ricavato dalla nuvola di punti</td></tr>
           <tr><th>Ortofoto</th><td>Georeferenziata, per coperture, lotti e cantieri</td></tr>
           <tr><th>Drone e abilitazione</th><td><span class="ph">[modello drone] · [attestato pilota A1/A3, A2]</span></td></tr>
         </table>
@@ -391,7 +398,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <option>Pratica per ristrutturazione</option>
             <option>Accatastamento o variazione catastale</option>
             <option>Perizia o stima</option>
-            <option>Rilievo 2D/3D, drone o modello BIM</option>
+            <option>Attestato di prestazione energetica (APE)</option>
+            <option>Rilievo 2D/3D, drone o modellazione 3D</option>
             <option>Coordinamento sicurezza CSP/CSE</option>
             <option>Altro</option>
           </select>
