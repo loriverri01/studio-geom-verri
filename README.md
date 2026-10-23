@@ -1,4 +1,4 @@
-# Studio Geom. Verri Lorenzo
+# Geom. Verri Lorenzo
 
 Sito statico dello studio (HTML/CSS, nessuna build), pubblicato con GitHub Pages.
 
