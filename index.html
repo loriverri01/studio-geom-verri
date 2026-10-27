@@ -170,6 +170,11 @@ input, select, textarea { font: 400 1rem/1.4 var(--f-body); color: var(--ink); b
 textarea { min-height: 120px; resize: vertical; }
 .note { font-size: .82rem; color: var(--ink-2); }
 .sent { background: var(--accent-soft); color: var(--ink); padding: 12px 14px; font-size: .93rem; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: .88rem; color: var(--ink-2); }
+.check input { width: auto; margin-top: 3px; }
+#f-err { color: var(--ph); }
+.btn:disabled { opacity: .6; cursor: wait; }
 @media (max-width: 860px) { .contact { grid-template-columns: 1fr; gap: 36px; } }
 
 footer { border-top: 1.5px solid var(--ink); padding-block: 28px 36px; font: 400 .78rem/1.6 var(--f-mono); color: var(--ink-2); }
@@ -409,9 +414,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </select>
         </label>
         <label for="f-msg">Descrivi brevemente l'immobile e la richiesta<textarea id="f-msg" name="messaggio" placeholder="Es. appartamento a Novara, devo vendere e il notaio chiede la conformità urbanistica e catastale."></textarea></label>
-        <button class="btn primary" type="submit" style="justify-self:start">Invia richiesta</button>
-        <p class="note">Anteprima: il modulo non invia ancora i messaggi. Lo collegheremo alla tua email quando il sito andrà online.</p>
-        <p class="sent" id="sent" hidden>Grazie. In questa anteprima la richiesta non viene spedita: sul sito pubblicato arriverà a geo.verri@gmail.com.</p>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check" for="f-privacy"><input id="f-privacy" name="privacy" type="checkbox"> <span>Ho letto la <a href="privacy.html">privacy policy</a> e acconsento a essere ricontattato per questa richiesta.</span></label>
+        <button class="btn primary" type="submit" id="f-invia" style="justify-self:start">Invia richiesta</button>
+        <p class="note" id="f-err" role="alert" hidden></p>
+        <p class="sent" id="sent" role="status" hidden>Grazie, richiesta inviata. Ti rispondo entro un giorno lavorativo.</p>
       </form>
     </div>
   </section>
@@ -467,8 +474,34 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       try { navigator.clipboard.writeText(txt).then(ok, sel); } catch (e) { sel(); }
     });
   });
-  document.getElementById('richiesta').addEventListener('submit', function (ev) {
-    ev.preventDefault(); document.getElementById('sent').hidden = false;
+  var form = document.getElementById('richiesta');
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var err = document.getElementById('f-err'), ok = document.getElementById('sent'), btn = document.getElementById('f-invia');
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    err.hidden = true; ok.hidden = true;
+    var miss = [];
+    if (!v('f-nome')) miss.push('il nome');
+    if (!v('f-email') && !v('f-tel')) miss.push('un\'email o un telefono');
+    if (!v('f-msg')) miss.push('una breve descrizione');
+    if (miss.length) { err.textContent = 'Per inviare la richiesta inserisci ' + miss.join(', ') + '.'; err.hidden = false; return; }
+    if (!document.getElementById('f-privacy').checked) { err.textContent = 'Per inviare la richiesta spunta la casella sulla privacy policy.'; err.hidden = false; return; }
+    if (form._honey.value) return;
+    btn.disabled = true; btn.textContent = 'Invio in corso…';
+    fetch('https://formsubmit.co/ajax/geo.verri@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Richiesta dal sito: ' + v('f-servizio') + ' – ' + v('f-nome'),
+        _template: 'table', _captcha: 'false', _replyto: v('f-email'),
+        Nome: v('f-nome'), Telefono: v('f-tel'), Email: v('f-email'), Servizio: v('f-servizio'), Messaggio: v('f-msg')
+      })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d && (d.success === true || d.success === 'true')) { form.reset(); ok.hidden = false; }
+      else throw new Error('invio');
+    }).catch(function () {
+      err.textContent = 'Invio non riuscito. Scrivimi direttamente a geo.verri@gmail.com o chiamami al +39 377 543 1027.'; err.hidden = false;
+    }).finally(function () { btn.disabled = false; btn.textContent = 'Invia richiesta'; });
   });
 })();
 </script>
