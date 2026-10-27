@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy policy · Geom. Verri Lorenzo</title>
+<meta name="description" content="Informativa sul trattamento dei dati personali del sito di Geom. Verri Lorenzo.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="icon" href="img/logo.png">
+<style>
+:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: tavola tecnica. Griglia a 12 colonne con cartiglio, quote e coordinate come dettagli; un solo colore d'accento (blu cianografia), giallo cantiere solo per la sicurezza. */
+:root {
+  --paper: #f2f4f3;
+  --sheet: #ffffff;
+  --ink: #1d1d1b;
+  --ink-2: #4a5250;
+  --line: #d3d9d7;
+  --accent: #1f4e79;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3ebf3;
+  --safety: #f2b705;
+  --ph: #9a5b00;
+  --contour: rgba(31, 78, 121, .22);
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --f-mono: "Archivo", "Helvetica Neue", Arial, sans-serif; /* etichette: niente monospazio, su richiesta */
+  --maxw: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121517; --sheet: #1a1f22; --ink: #e8ecea; --ink-2: #a9b3b0; --line: #2d3538;
+    --accent: #7fb0de; --accent-ink: #0d1a26; --accent-soft: #1b2a37; --safety: #f2c230; --ph: #f0b45a;
+    --contour: rgba(127, 176, 222, .18); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121517; --sheet: #1a1f22; --ink: #e8ecea; --ink-2: #a9b3b0; --line: #2d3538;
+  --accent: #7fb0de; --accent-ink: #0d1a26; --accent-soft: #1b2a37; --safety: #f2c230; --ph: #f0b45a;
+  --contour: rgba(127, 176, 222, .18); color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { filter: invert(1) brightness(.95); } }
+:root[data-theme="dark"] .logo { filter: invert(1) brightness(.95); }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.label { font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.ph { color: var(--ph); border-bottom: 1px dashed currentColor; font-style: normal; }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand img { width: 34px; height: auto; }
+.brand b { font: 700 1.05rem/1.1 var(--f-display); font-stretch: 112%; display: block; }
+.brand span { font: 400 .72rem/1.2 var(--f-mono); color: var(--ink-2); letter-spacing: .06em; text-transform: uppercase; }
+.nav { display: flex; gap: 22px; font-size: .93rem; }
+.nav a { color: var(--ink); text-decoration: none; }
+.nav a:hover { color: var(--accent); }
+.nav .cta { background: var(--accent); color: var(--accent-ink); padding: 7px 14px; border-radius: 3px; font-weight: 600; }
+.nav .cta:hover { color: var(--accent-ink); filter: brightness(1.1); }
+@media (max-width: 860px) { .nav a:not(.cta) { display: none; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: end; padding-block: 88px 64px; }
+.hero h1 { font-size: clamp(2.3rem, 5.4vw, 4.1rem); font-weight: 760; font-stretch: 108%; letter-spacing: -.015em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 22px; max-width: 34em; font-size: 1.15rem; color: var(--ink-2); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 3px; font: 600 1rem/1 var(--f-body); text-decoration: none; border: 1px solid var(--accent); cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+
+/* cartiglio: title block of a technical drawing */
+.cartiglio { background: var(--sheet); border: 1.5px solid var(--ink); font: 400 .8rem/1.4 var(--f-mono); }
+.cartiglio div { display: grid; grid-template-columns: 9.5em 1fr; border-top: 1px solid var(--ink); }
+.cartiglio div:first-child { border-top: 0; }
+.cartiglio dt, .cartiglio dd { margin: 0; padding: 7px 10px; }
+.cartiglio dt { color: var(--ink-2); border-right: 1px solid var(--ink); text-transform: uppercase; letter-spacing: .05em; font-size: .7rem; align-self: center; }
+.cartiglio dd { color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+.cartiglio .head { display: flex; gap: 12px; align-items: center; padding: 10px; }
+.cartiglio .head img { width: 38px; }
+.cartiglio .head b { font: 700 1rem/1.15 var(--f-display); font-stretch: 110%; }
+
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 56px 40px; gap: 36px; } }
+
+/* Sections */
+section { padding-block: 84px; }
+.sec-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: end; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 720; font-stretch: 106%; }
+.sec-head p { color: var(--ink-2); max-width: 38em; }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; gap: 14px; } section { padding-block: 60px; } }
+
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); border-left: 1px solid var(--line); }
+.svc { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 26px 30px; display: flex; flex-direction: column; gap: 12px; background: var(--sheet); min-width: 0; }
+.svc .code { font: 500 .72rem/1 var(--f-mono); color: var(--accent); letter-spacing: .08em; }
+.svc h3 { font-size: 1.32rem; font-weight: 700; font-stretch: 104%; }
+.svc p { color: var(--ink-2); font-size: .98rem; }
+.svc ul { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.svc li { font: 400 .74rem/1 var(--f-mono); padding: 6px 8px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); }
+.svc.sic { box-shadow: inset 0 4px 0 var(--safety); grid-column: 1 / -1; }
+.svc.sic p { max-width: 46em; }
+@media (max-width: 960px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .services { grid-template-columns: 1fr; } }
+
+/* Feature bands */
+.band { background: var(--sheet); border-block: 1px solid var(--line); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.split > * { min-width: 0; }
+.split h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 720; font-stretch: 106%; margin-top: 10px; }
+.split .body { display: grid; gap: 16px; margin-top: 20px; color: var(--ink-2); max-width: 36em; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 32px; } }
+
+.specs { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.specs th, .specs td { text-align: left; padding: 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.specs th { font: 500 .75rem/1.5 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); width: 40%; padding-right: 16px; }
+.specs caption { text-align: left; padding-bottom: 10px; }
+
+.drone-fig { margin: 0; border: 1px solid var(--line); background: var(--paper); aspect-ratio: 4 / 3; max-width: 100%; position: relative; overflow: hidden; }
+.drone-fig svg { width: 100%; height: 100%; display: block; }
+.drone-fig figcaption { position: absolute; left: 12px; bottom: 10px; font: 400 .72rem/1.3 var(--f-mono); color: var(--ink-2); }
+
+.callout { border-left: 4px solid var(--safety); background: var(--paper); padding: 18px 20px; font-size: .97rem; color: var(--ink); }
+.callout b { font-family: var(--f-display); }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; counter-reset: s; border-top: 1.5px solid var(--ink); }
+.steps li { padding: 22px 20px 0 0; counter-increment: s; position: relative; }
+.steps li::before { content: counter(s); font: 700 2.4rem/1 var(--f-display); font-stretch: 120%; color: var(--accent); display: block; margin-bottom: 12px; }
+.steps li::after { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
+.steps h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 6px; }
+.steps p { font-size: .93rem; color: var(--ink-2); }
+@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* About */
+.about { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
+.photo { aspect-ratio: 3 / 4; max-width: 100%; width: 100%; height: auto; object-fit: cover; display: block; border: 1px solid var(--line); background: var(--sheet); }
+.about .body { display: grid; gap: 16px; color: var(--ink-2); max-width: 40em; }
+.creds { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 8px; }
+.creds div { display: grid; gap: 2px; }
+.creds b { font: 600 1rem/1.3 var(--f-body); color: var(--ink); }
+@media (max-width: 700px) { .about { grid-template-columns: 1fr; } .photo { max-width: 200px; } }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; }
+.contact > * { min-width: 0; }
+.contact dl { margin: 24px 0 0; display: grid; gap: 18px; }
+.contact dt { margin-bottom: 2px; }
+.contact dd { margin: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.copy { font: 500 .7rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line); background: transparent; color: var(--ink-2); padding: 5px 8px; border-radius: 2px; cursor: pointer; }
+.copy:hover { color: var(--accent); border-color: var(--accent); }
+form { background: var(--sheet); border: 1px solid var(--line); padding: 28px; display: grid; gap: 16px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } form { padding: 20px; } }
+label { display: grid; gap: 6px; font-size: .88rem; font-weight: 600; }
+input, select, textarea { font: 400 1rem/1.4 var(--f-body); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 10px 12px; width: 100%; }
+textarea { min-height: 120px; resize: vertical; }
+.note { font-size: .82rem; color: var(--ink-2); }
+.sent { background: var(--accent-soft); color: var(--ink); padding: 12px 14px; font-size: .93rem; }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; gap: 36px; } }
+
+footer { border-top: 1.5px solid var(--ink); padding-block: 28px 36px; font: 400 .78rem/1.6 var(--f-mono); color: var(--ink-2); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }
+.legal { max-width: 46rem; display: grid; gap: 14px; }
+.legal h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 740; }
+.legal h2 { font-size: 1.25rem; font-weight: 700; margin-top: 18px; }
+.legal p, .legal li { color: var(--ink-2); }
+.legal ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.legal .upd { font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="logo" src="img/logo.png" alt="Logo Geom. Verri Lorenzo">
+      <div><b>Geom. Verri Lorenzo</b><span>Geometra · Novara</span></div>
+    </a>
+    <nav class="nav" aria-label="Sezioni"><a class="cta" href="index.html#contatti">Contatti</a></nav>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="wrap legal">
+      <p class="label">Informativa ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (GDPR)</p>
+      <h1>Privacy policy</h1>
+      <p class="upd">Ultimo aggiornamento: 27 ottobre 2026</p>
+
+      <h2>1. Titolare del trattamento</h2>
+      <p>Geom. Lorenzo Verri, geometra libero professionista<br>Strada Privata Bellazzi, 20 · 28100 Novara (NO)<br>P.IVA 02733000034<br>Email: geo.verri@gmail.com · PEC: lorenzo.verri@geopec.it · Tel. +39 377 543 1027</p>
+
+      <h2>2. Quali dati raccolgo</h2>
+      <p><b>Dati che ci fornisci tu.</b> Quando mi scrivi via email o PEC, mi telefoni o usi il modulo di contatto, tratto i dati che inserisci: nome e cognome, recapiti, informazioni sull'immobile o sull'incarico e ogni altro dato contenuto nel messaggio. Ti chiedo di non inviare dati non necessari, in particolare dati relativi alla salute o altre categorie particolari di dati.</p>
+      <p><b>Dati di navigazione.</b> Il sito è ospitato da GitHub Pages. Come avviene per qualsiasi sito, il server registra automaticamente alcuni dati tecnici della visita, tra cui l'indirizzo IP, il browser utilizzato, la data e l'ora della richiesta. Questi dati sono trattati da GitHub per garantire il funzionamento e la sicurezza del servizio e non vengono usati da me per identificarti.</p>
+
+      <h2>3. Finalità e base giuridica</h2>
+      <ul>
+        <li><b>Rispondere alle tue richieste</b> di informazioni, sopralluoghi o preventivi. Base giuridica: esecuzione di misure precontrattuali adottate su tua richiesta (art. 6, par. 1, lett. b GDPR).</li>
+        <li><b>Svolgere l'incarico professionale</b> eventualmente conferito. Base giuridica: esecuzione del contratto (art. 6, par. 1, lett. b GDPR).</li>
+        <li><b>Adempiere agli obblighi di legge</b> fiscali, contabili e deontologici. Base giuridica: obbligo legale (art. 6, par. 1, lett. c GDPR).</li>
+        <li><b>Garantire la sicurezza del sito.</b> Base giuridica: legittimo interesse (art. 6, par. 1, lett. f GDPR).</li>
+      </ul>
+      <p>Il conferimento dei dati è facoltativo, ma senza i dati di contatto non posso rispondere alla tua richiesta.</p>
+
+      <h2>4. Come vengono trattati e per quanto tempo</h2>
+      <p>I dati sono trattati con strumenti elettronici e cartacei, con misure adeguate a proteggerli. Li conservo:</p>
+      <ul>
+        <li>per le richieste che non si trasformano in un incarico, fino a 12 mesi dall'ultimo contatto;</li>
+        <li>per gli incarichi professionali, per la durata del rapporto e poi per 10 anni, come previsto per la documentazione contabile e professionale (art. 2220 c.c.);</li>
+        <li>per i dati di navigazione, per il tempo stabilito da GitHub nella propria informativa.</li>
+      </ul>
+
+      <h2>5. A chi possono essere comunicati</h2>
+      <p>I dati non vengono diffusi né venduti. Possono essere comunicati, solo quando necessario, a:</p>
+      <ul>
+        <li>enti pubblici e amministrazioni a cui vanno presentate le pratiche (Comune, Agenzia delle Entrate – Territorio, Regione, ASL e simili);</li>
+        <li>professionisti e collaboratori coinvolti nell'incarico, tenuti alla riservatezza;</li>
+        <li>il commercialista, per gli adempimenti fiscali;</li>
+        <li>fornitori di servizi tecnici che agiscono come responsabili del trattamento: Google (casella email), GitHub (hosting del sito).</li>
+      </ul>
+
+      <h2>6. Trasferimento fuori dall'Unione europea</h2>
+      <p>GitHub Inc. e Google LLC hanno sede negli Stati Uniti e aderiscono all'EU-U.S. Data Privacy Framework, riconosciuto adeguato dalla Commissione europea con decisione del 10 luglio 2023. I trasferimenti avvengono quindi ai sensi dell'art. 45 GDPR.</p>
+
+      <h2>7. Cookie</h2>
+      <p>Questo sito non usa cookie di profilazione né cookie di statistica e non installa strumenti di tracciamento. I caratteri tipografici sono caricati direttamente dal sito, senza collegamenti a servizi esterni. Per questo non è necessario alcun banner di consenso.</p>
+
+      <h2>8. I tuoi diritti</h2>
+      <p>In ogni momento puoi chiedere l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità e opporti al trattamento basato sul legittimo interesse (artt. 15–22 GDPR). Per esercitare i tuoi diritti scrivi a geo.verri@gmail.com o alla PEC lorenzo.verri@geopec.it: ti rispondo entro 30 giorni.</p>
+      <p>Hai anche il diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>).</p>
+
+      <h2>9. Modifiche</h2>
+      <p>Questa informativa può essere aggiornata. La versione in vigore è sempre quella pubblicata su questa pagina, con la data dell'ultimo aggiornamento indicata in alto.</p>
+
+      <p style="margin-top:32px"><a href="index.html">← Torna al sito</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Geom. Verri Lorenzo · Strada Privata Bellazzi, 20 · 28100 Novara · P.IVA 02733000034</span>
+    <span><a href="privacy.html">Privacy policy</a> · Nessun cookie di profilazione</span>
+  </div>
+</footer>
+</body>
+</html>
